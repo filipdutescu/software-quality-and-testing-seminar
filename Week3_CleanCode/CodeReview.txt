@@ -8,4 +8,6 @@ Code Review
 	- rename 'valoare'
 	- format codes
 	
-	- remove magic number
+	- remove magic numbers
+	- validate input values
+	- replace if to switch
