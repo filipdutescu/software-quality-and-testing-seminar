@@ -1,0 +1,11 @@
+Code Review
+
+1. Stage 1. Naming conventions
+	- rename class Whatever to something more meaningful
+	- rename method Calculeaza - use camelCase
+	- rename Calculeaza parameters
+	- rename 'rezultat'
+	- rename 'valoare'
+	- format codes
+	
+	- remove magic number
