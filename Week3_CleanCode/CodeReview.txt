@@ -11,3 +11,13 @@ Code Review
 	- remove magic numbers
 	- validate input values
 	- replace if to switch
+
+2. Stage 2. KISS, SRP -> reduce method complexity
+	- remove switch by generalizing computation
+	- outsource validations
+	- outsource fidelity discount computation
+
+3. Stage 3. DIP
+	- remove dependency regarding the validation of input value
+	- remove dependency on constant values
+	- remove dependency on fidelity discount computation logic
