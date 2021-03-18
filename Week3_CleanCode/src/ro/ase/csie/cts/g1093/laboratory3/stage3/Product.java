@@ -2,39 +2,41 @@ package ro.ase.csie.cts.g1093.laboratory3.stage3;
 
 import ro.ase.csie.cts.g1093.laboratory3.exceptions.InvalidAccountAgeException;
 import ro.ase.csie.cts.g1093.laboratory3.exceptions.InvalidPriceException;
+import ro.ase.csie.cts.g1093.laboratory3.stage3.services.IMarketingService;
+import ro.ase.csie.cts.g1093.laboratory3.stage3.services.IValidatorService;
 
-public class Product {
+public class Product {	
+	private IMarketingService _marketingService;	
+	private IValidatorService _validatorService;
 	
-	private static final int MAX_ACCOUNT_AGE = 10;
-	private static final float MAX_FIDELITY_DISCOUNT = 0.15f;
+	public Product(IMarketingService marketingService, IValidatorService validatorService) {
+		setMarketingService(marketingService);
+		setValidatorService(validatorService);
+	}
 	
 	public float computeDiscountedPrice(ProductType productType, float initialPrice, int accountAgeYears)
 			throws InvalidPriceException, InvalidAccountAgeException {
-		validatePrice(initialPrice);
-		validateAccountAge(accountAgeYears);
+		_validatorService.validatePrice(initialPrice);
+		_validatorService.validateAccountAge(accountAgeYears);
 		
-		float fidelityDiscount = productType == ProductType.NEW ? 0.0f : computeFidelityDiscount(accountAgeYears);
+		float fidelityDiscount = productType == ProductType.NEW ? 0.0f : _marketingService.computeFidelityDiscount(accountAgeYears);
 		float finalPrice = computeDiscountedPrice(initialPrice, productType, fidelityDiscount);
 		
 		return finalPrice;
 	}
 	
-	private static void validatePrice(float price) throws InvalidPriceException {
-		if (price <= 0.0f) {
-			throw new InvalidPriceException();
+	public void setMarketingService(IMarketingService marketingService) {
+		if(marketingService == null) {
+			throw new NullPointerException();
 		}
+		_marketingService = marketingService;
 	}
 	
-	private static void validateAccountAge(int accountAgeYears) throws InvalidAccountAgeException {
-		if (accountAgeYears <= 0) {
-			throw new InvalidAccountAgeException();
+	public void setValidatorService(IValidatorService validatorService) {
+		if(validatorService == null) {
+			throw new NullPointerException();
 		}
-	}
-	
-	private static float computeFidelityDiscount(int accountAgeYears) {
-		return accountAgeYears > MAX_ACCOUNT_AGE
-				? MAX_FIDELITY_DISCOUNT
-				: (float) accountAgeYears / 100;
+		_validatorService = validatorService;
 	}
 	
 	private static float computeDiscountedPrice(float initialPrice, ProductType productType, float fidelityDiscount) {
