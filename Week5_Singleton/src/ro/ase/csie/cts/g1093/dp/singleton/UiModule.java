@@ -1,10 +1,8 @@
-package ro.ase.cts.g1093.dp.singleton;
-
-import ro.ase.cts.g1093.dp.singleton.RestBackend;
+package ro.ase.csie.cts.g1093.dp.singleton;
 
 public class UiModule {
 
-  public UiModule(String url, String data) {
+  public UiModule() {
     RestBackend backend = RestBackend.getInstance();
   }
 

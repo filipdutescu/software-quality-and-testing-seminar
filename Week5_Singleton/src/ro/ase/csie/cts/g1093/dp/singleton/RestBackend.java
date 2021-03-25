@@ -1,4 +1,4 @@
-package ro.ase.cts.g1093.dp.singleton;
+package ro.ase.csie.cts.g1093.dp.singleton;
 
 public class RestBackend {
 
@@ -19,6 +19,14 @@ public class RestBackend {
   public static synchronized RestBackend getInstance() {
     if (_instance == null) {
       _instance = new RestBackend("www.acs.ase.ro/cts", "Get backend connection");
+    }
+
+    return _instance;
+  }
+
+  public static synchronized RestBackend getInstance(String url, String data) {
+    if (_instance == null) {
+      _instance = new RestBackend(url, data);
     }
 
     return _instance;

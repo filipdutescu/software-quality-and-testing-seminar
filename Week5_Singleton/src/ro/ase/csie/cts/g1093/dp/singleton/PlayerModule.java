@@ -1,10 +1,8 @@
-package ro.ase.cts.g1093.dp.singleton;
-
-import ro.ase.cts.g1093.dp.singleton.RestBackend;
+package ro.ase.csie.cts.g1093.dp.singleton;
 
 public class PlayerModule {
 
-  public PlayerModule(String url, String data) {
+  public PlayerModule() {
     RestBackend backend = RestBackend.getInstance();
   }
 

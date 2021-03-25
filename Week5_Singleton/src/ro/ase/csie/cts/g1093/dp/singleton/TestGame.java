@@ -1,7 +1,4 @@
-package ro.ase.cts.g1093.dp.singleton;
-
-import ro.ase.cts.g1093.dp.singleton.RestBackend;
-import ro.ase.cts.g1093.dp.singleton.UiModule;
+package ro.ase.csie.cts.g1093.dp.singleton;
 
 public class TestGame {
 
@@ -11,7 +8,10 @@ public class TestGame {
     backend.sendGET();
 
     UiModule uiModule = new UiModule();
+    PlayerModule playerModule = new PlayerModule();
 
+    // Bad code, gives impression of multiple singletons
+    // RestBackend backend2 = RestBackend.getInstance("test", "test");
   }
 
 }
