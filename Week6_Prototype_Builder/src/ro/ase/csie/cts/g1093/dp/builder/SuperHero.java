@@ -14,7 +14,7 @@ public class SuperHero {
   private ISuperPower _superPower;
   private ISuperPower _ultimatePower;
 
-  public SuperHero() {
+  private SuperHero() {
   }
 
   public SuperHero(String name,
@@ -35,4 +35,56 @@ public class SuperHero {
     _ultimatePower = ultimatePower;
   }
 
+
+  public static class SuperHeroBuilder {
+    SuperHero _superHero;
+
+    public SuperHeroBuilder(String name, int healthPoints) {
+      _superHero = new SuperHero();
+
+      _superHero._name = name;
+      _superHero._healthPoints = healthPoints;
+    } 
+
+    public SuperHeroBuilder isVillan() {
+      _superHero._isVillain = true;
+
+      return this;
+    }
+
+    public SuperHeroBuilder isWounded() {
+      _superHero._isWounded = true;
+
+      return this;
+    }
+
+    public SuperHeroBuilder withLeftWeapon(IWeapon weapon) {
+      _superHero._leftWeapon = weapon;
+
+      return this;
+    }
+
+    public SuperHeroBuilder withRightWeapon(IWeapon weapon) {
+      _superHero._rightWeapon = weapon;
+
+      return this;
+    }
+
+    public SuperHeroBuilder withSuperPower(ISuperPower superPower) {
+      _superHero._superPower = superPower;
+
+      return this;
+    }
+
+    public SuperHeroBuilder withUltimatePower(ISuperPower ultimatePower) {
+      _superHero._ultimatePower = ultimatePower;
+
+      return this;
+    }
+
+    public SuperHero build() {
+      return _superHero;
+    }
+
+  }
 }
